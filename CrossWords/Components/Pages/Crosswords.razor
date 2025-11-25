@@ -1,12 +1,41 @@
-﻿@page "/crosswords"
+﻿@page "/"
 @rendermode InteractiveServer
 
 <PageTitle>Crosswords</PageTitle>
 
 <h1>Crosswords</h1>
 
-<p>Hello world</p>
+<input id="word" @bind="word" @onkeyup="HandleKeyPress" />
 
+<button @onclick="AddWordToList">Add word</button>
+
+<p>@string.Join(", ", wordList)</p>
+
+<button @onclick="ClearList">Clear List</button>
 
 @code {
+    private string word = "";
+    private List<string> wordList = new List<string>();
+    private void AddWordToList()
+    {
+        @* Console.WriteLine($"{word}");
+        foreach  (var w in wordList)
+        {
+            Console.WriteLine($"{w}");
+        } *@
+        wordList.Add(word);
+        word = "";
+    }
+
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            AddWordToList();
+        }
+    }
+    private void ClearList()
+    {
+        wordList.Clear();
+    }
 }
