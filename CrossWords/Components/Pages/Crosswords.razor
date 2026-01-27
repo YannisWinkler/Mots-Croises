@@ -23,8 +23,12 @@
         {
             Console.WriteLine($"{w}");
         } *@
-        wordList.Add(word);
-        word = "";
+        if (!string.IsNullOrWhiteSpace(word))
+        {
+            wordList.Add(word);
+            word = "";
+            return;
+        }
     }
 
     private void HandleKeyPress(KeyboardEventArgs e)
