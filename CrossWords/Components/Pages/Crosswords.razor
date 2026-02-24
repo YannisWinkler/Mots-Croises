@@ -13,6 +13,7 @@
 <p>@string.Join(", ", wordList)</p>
 
 <button @onclick="ClearList">Clear List</button>
+<button @onclick="GenerateCrossword">Generate Crossword</button>
 
 @code {
     private string word = "";
@@ -24,9 +25,6 @@
         {
             Console.WriteLine($"{w}");
         } *@
-        @* var test = new Test();
-        test.TestPath();
-        test.GetIntersection(); *@
 
         if (!string.IsNullOrWhiteSpace(word))
         {
@@ -35,7 +33,13 @@
             return;
         }
     }
-
+    private void GenerateCrossword()
+    {
+        var test = new Test();
+        string first = wordList[0];
+        string second = wordList[1];
+        test.JointLetter(first, second);
+    }
     private void HandleKeyPress(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")

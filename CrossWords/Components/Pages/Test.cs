@@ -8,22 +8,13 @@ public class Test
     {
         Console.WriteLine("test");
     }
-    public void PrintIntersection(string[] id1, string[] id2)
+    public void JointLetter(string word1, string word2)
     {
-        IEnumerable<string> both = id1.Intersect(id2);
-        foreach (string id in both)
-            Console.WriteLine(id);
-    }
-    public void GetIntersection()
-    {
-        // string[] word = { "W", "o", "r", "d" };
-        // string[] cross = { "C", "r", "o", "s", "s" };
-        string[] word = { "Word" };
-        string[] cross = { "Cross" };
+        char[] id1 = word1.ToCharArray();// Convert the first string to a character array
+        char[] id2 = word2.ToCharArray();
+        var both = id1.Intersect(id2);
 
-        Console.WriteLine(word.Intersect(cross));
-        // PrintIntersection(word, cross);
-        TestPath();
+        Console.WriteLine(string.Join(", ", both));
     }
 
 }
